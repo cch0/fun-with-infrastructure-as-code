@@ -1,5 +1,4 @@
 **/.terraform
 **/terraform.tfstate*
 tf-*sa.json
-**/terraform.tfvars
 .DS_Store
