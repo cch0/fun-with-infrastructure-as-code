@@ -1,4 +1,18 @@
+# terraform
 **/.terraform
 **/terraform.tfstate*
 tf-*sa.json
+
+# pulumi
+*.pyc
+**/venv/
+
+**/env/
+**/Pulumi.*.yaml
+**/pulumi-provisioning-sa.json
+**/__pycache__
+
+# misc
+.vscode/
 .DS_Store
+

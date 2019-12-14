@@ -1,0 +1,85 @@
+parent_stack_name: "dev-project-02-infra"
+vpc_stack_name: "dev-project-02-vpc"
+
+project:
+  gke:
+    cluster_config:
+      'cluster-04':
+        'default_max_pods_per_node': 8
+        'enable_binary_authorization': true
+        'enable_intranode_visibility': true
+        'initial_node_count': 1
+        'network_id': 'network-01'
+        'location': 'us-central1'
+        'logging_service': 'logging.googleapis.com/kubernetes'
+        'min_master_version': '1.13.11-gke.14'
+        'monitoring_service': 'monitoring.googleapis.com/kubernetes'
+        'remove_default_node_pool': false
+        'master_auth':
+            'username': ''
+            'password': ''
+        'node_count': 1
+        'node_config':
+          'disk_size_gb': 10
+          'diskType': 'pd-standard'
+          'machine_type': 'n1-standard-1'
+          'preemptible': true
+          'oauthScopes':
+            - 'https://www.googleapis.com/auth/logging.write'
+            - 'https://www.googleapis.com/auth/monitoring'
+            - 'https://www.googleapis.com/auth/devstorage.read_only'
+          'labels':
+            'label-01': 'value-01'
+          'tags':
+            - 'foo'
+            - 'bar'
+        'pod_security_policy_config':
+          'enabled': true
+        'cluster_autoscaling':
+          'enabled': true
+          'resourceLimits':
+            - 'resourceType': 'cpu'
+              'minimum': 1
+              'maximum': 8
+            - 'resourceType': 'memory'
+              'minimum': 1
+              'maximum': 50
+        'vertical_pod_autoscaling':
+          'enabled': true
+        'ip_allocation_policy':
+#          'useIpAliases': true
+        'addons_config':
+          'horizontalPodAutoscaling':
+            'disabled': false
+          'httpLoadBalancing':
+            'disabled': false
+          'istioConfig':
+            'disabled': true
+          'networkPolicyConfig':
+            'disabled': false
+    node_pool_config:
+      'cluster-04':
+        'node-pool-01':
+          'initial_node_count': 1
+          'max_pods_per_node': 8
+          'name_prefix': 'node-pool-01'
+          'node_config':
+            'disk_size_gb': 10
+            'diskType': 'pd-standard'
+            'machine_type': 'n1-standard-1'
+            'preemptible': true
+            'oauthScopes':
+              - 'https://www.googleapis.com/auth/logging.write'
+              - 'https://www.googleapis.com/auth/monitoring'
+              - 'https://www.googleapis.com/auth/devstorage.read_only'
+            'labels':
+              'label-01': 'value-01'
+            'tags':
+              - 'foo'
+              - 'bar'
+          'autoscaling':
+            'maxNodeCount': 5
+            'minNodeCount': 1
+          'management':
+            'autoRepair': true
+            'autoUpgrade': false
