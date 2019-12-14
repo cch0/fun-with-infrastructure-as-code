@@ -3,4 +3,5 @@
 An opinionated illustration of cloud resources provisioning
 
 * [Terraform](./terraform/README.md) solution
+* [Pulumi](./pulumi/README.md) solution
 
