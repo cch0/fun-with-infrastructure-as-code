@@ -4,7 +4,7 @@
 
 The diagram below illustrates the general ideas of using Pulumi for infrastructure provisioning.
 
-* follow the same idea as described in [../../blob/master/terraform/README.md](terraform), this project is aimed to produce the same infrastructure done by Terraform
+* follow the same idea as described in [terraform](../terraform/README.md), this project is aimed to produce the same infrastructure done by Terraform
 * There are few resources assumed to be created beforehand either manually or by Pulumi.
 * Every resources within dotted line are managed by Pulumi
 * There is parity between each environment
