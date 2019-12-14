@@ -4,7 +4,7 @@
 
 The diagram below illustrates the general ideas of using Pulumi for infrastructure provisioning.
 
-* follow the same idea as described in [../terraform/README.md], this project is aimed to produce the same infrastructure done by Terraform
+* follow the same idea as described in [../terraform/README.md](terraform), this project is aimed to produce the same infrastructure done by Terraform
 * There are few resources assumed to be created beforehand either manually or by Pulumi.
 * Every resources within dotted line are managed by Pulumi
 * There is parity between each environment
@@ -139,15 +139,18 @@ When a resource needs information from the enclosing project, we provide the sta
 parent_stack_name: "dev-group-02-infra"
 ```
 
-When Pulumi script needs information such as parent folder id or project id, it can retrieve by
+When Pulumi script needs information such as parent folder id or project id, it can retrieve it by
 
 ```
+# read config.yaml file into a dict
 config = config_util.read('config.yaml')
 
+# determine parent folder id 
 parent_folder_id = config_util.get_parent_folder_id_from_stack(config)
 
-
+# project specific config
 project_config = config['project']
 
+# determine project id
 project_id = config_util.get_project_id_from_stack(config)
 ```
