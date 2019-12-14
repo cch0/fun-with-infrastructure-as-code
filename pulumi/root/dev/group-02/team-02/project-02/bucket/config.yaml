@@ -1,0 +1,20 @@
+parent_stack_name: "dev-project-02-infra"
+
+project:
+  buckets:
+    'project-02-bucket-01':
+      'storage_class': 'STANDARD'
+      'location': 'US'
+      'versioning':
+        'enabled': true
+      'acl':
+        'predefined_acl': 'projectPrivate'
+    'project-02-bucket-02':
+      'storage_class': 'STANDARD'
+      'location': 'us-central1'
+      'versioning':
+        'enabled': true
+      'acl':
+        'role_entities':
+          - 'WRITER:group-GROUP_EMAIL'
+

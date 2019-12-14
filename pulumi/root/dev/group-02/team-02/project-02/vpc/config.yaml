@@ -1,0 +1,29 @@
+parent_stack_name: "dev-project-02-infra"
+
+project:
+  networks:
+    'network-01':
+      'auto_create_subnetworks': true
+      'delete_default_routes_on_create': false
+      'routing_mode': 'GLOBAL'
+      'region': 'us-central1'
+    'network-02':
+      'auto_create_subnetworks': false
+      'delete_default_routes_on_create': false
+      'routing_mode': 'GLOBAL'
+      'region': 'us-central1'
+      'subnets':
+        'subnet-01':
+          'description': ''
+          'ip_cidr_range': '10.10.10.0/24'
+          'private_ip_google_access': true
+          'secondary_ip_ranges':
+            - 'ip_cidr_range': '192.168.10.0/24'
+              'rangeName': 'secondary-01'
+        'subnet-02':
+          'description': ''
+          'ip_cidr_range': '10.10.20.0/24'
+          'private_ip_google_access': true
+          'secondary_ip_ranges':
+            - 'ip_cidr_range': '192.168.20.0/24'
+              'rangeName': 'secondary-02'

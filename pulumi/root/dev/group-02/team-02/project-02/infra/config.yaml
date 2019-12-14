@@ -1,0 +1,18 @@
+
+
+parent_stack_name: "dev-team-02-infra"
+
+project:
+  project_name: "project-04"
+  auto_create_network: true
+  services:
+    disable_dependent_services: true
+    apis:
+      - 'compute.googleapis.com'
+      - 'container.googleapis.com'
+  iam_bindings:
+    'roles/editor':
+      - 'group:GROUP_EMAIL1'
+      - 'group:GROUP_EMAIL2'
+    'roles/compute.viewer':
+      - 'group:GROUP_EMAIL3'

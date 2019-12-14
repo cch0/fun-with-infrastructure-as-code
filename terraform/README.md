@@ -45,10 +45,10 @@ The diagram below illustrates the general ideas of using Terraform for infrastru
 
 * In Google Admin console, add `tf-provisioning` account into a group such as admin group
     * IAM roles will be assigned to this group instead of to member directly. 
-    * Memebers in this group will then have the assigned roles
+    * Members in this group will then have the assigned roles
 
 * In GCP console for the organization, configure admin group with the following IAM roles:
-    * Billing Account User
+    * Billing Account Administrator
 
 * In GCP console for the top level folder (`engineering`), configure admin group with the following IAM roles:
     * Folder Creator
@@ -59,7 +59,7 @@ The diagram below illustrates the general ideas of using Terraform for infrastru
 ## Directory Structure
 * modules: contains terraform modules for each supported resource
 
-* dev: directory to contain all resources for the `development` environment. Similarily, there can be `stage` and `prod` directories.
+* dev: directory to contain all resources for the `development` environment. Similarly, there can be `stage` and `prod` directories.
 
 * Assuming under `engineering` organization there are multiple development groups, each group then owns its directory (also GCP folder).  Group level IAM roles can be assigned at this folder level.
 
@@ -112,11 +112,11 @@ Provisioning begins from top level directory and work your way down each sub dir
 dev -> group -> team -> project
 ```
 
-When executing Terraform scripts for each level (grou, team, project), always executes the scripts inside `infra` directory first. This will also populate Terraform remote state with folder/project information such as folder-id, project-id, etc which is needed by other resources. 
+When executing Terraform scripts for each level (group, team, project), always executes the scripts inside `infra` directory first. This will also populate Terraform remote state with folder/project information such as folder-id, project-id, etc which is needed by other resources. 
 
 ## Remote State Management
 
-The terraform scripts uses a GCS Bucket for storing remote states. The directoy structure in this bucket has the same structure as the directory structure in the source repository.
+The terraform scripts uses a GCS Bucket for storing remote states. The directory structure in this bucket has the same structure as the directory structure in the source repository.
 
 What this means is that no two directories share the same prefix in the Terraform's backend configuration.
 

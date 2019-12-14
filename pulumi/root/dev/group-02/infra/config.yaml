@@ -1,0 +1,10 @@
+parent_stack_name: "dev-infra"
+
+folder:
+  folder_name: "group-02"
+  iam_bindings:
+    'roles/resourcemanager.folderMover':
+      - 'group:GROUP_EMAIL1'
+      - 'group:GROUP_EMAIL2'
+    'roles/resourcemanager.folderViewer':
+      - 'group:GROUP_EMAIL3'
